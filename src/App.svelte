@@ -58,7 +58,7 @@
   main {
     text-align: center;
     padding: 1em;
-    max-width: 480px;
+    max-width: none;
     margin: 0 auto;
     font-size: 1.2rem;
     color: #333;
@@ -81,7 +81,8 @@
   }
 
   .body {
-    width: 90%;
+    width: clamp(55%, 1024px, 100%);
+
     margin: 0 auto;
   }
 
@@ -100,16 +101,5 @@
 
   footer {
     font-size: 0.75em;
-  }
-
-  @media (min-width: 640px) {
-    main {
-      max-width: none;
-    }
-
-    .body {
-      width: 55%;
-      margin: 0 auto;
-    }
   }
 </style>
