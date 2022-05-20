@@ -8,7 +8,7 @@
 
   function convertToBionic(text) {
     return text
-      .split("\n\n")
+      .split("\n")
       .map((paragraph) => bionicParagraph(paragraph))
       .join("\n\n");
   }
@@ -16,6 +16,7 @@
   function bionicParagraph(paragraph) {
     return paragraph
       .split(" ")
+      .filter((word) => !!word && word.length > 0)
       .map((word) => {
         let midpoint = Math.ceil(word.length / 2);
         return `**${word.substr(0, midpoint)}**${word.substr(midpoint)}`;
