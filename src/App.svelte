@@ -7,10 +7,20 @@
     "**v0.1.** Created by [Simon Caine](https://twitter.com/smimons). Based on the [Bionic Reading](https://bionic-reading.com) concept by [Renato Casutt](https://twitter.com/renato_casutt).";
 
   function convertToBionic(text) {
-    return text.split(" ").map((word) => {
-      let midpoint = Math.ceil(word.length / 2);
-      return `**${word.substr(0, midpoint)}**${word.substr(midpoint)}`;
-    });
+    return text
+      .split("\n\n")
+      .map((paragraph) => bionicParagraph(paragraph))
+      .join("\n\n");
+  }
+
+  function bionicParagraph(paragraph) {
+    return paragraph
+      .split(" ")
+      .map((word) => {
+        let midpoint = Math.ceil(word.length / 2);
+        return `**${word.substr(0, midpoint)}**${word.substr(midpoint)}`;
+      })
+      .join(" ");
   }
 </script>
 
@@ -51,6 +61,7 @@
     max-width: 480px;
     margin: 0 auto;
     font-size: 1.2rem;
+    color: #333;
   }
 
   input[type="checkbox"] {
@@ -63,7 +74,6 @@
   }
 
   h1 {
-    color: #333333;
     text-transform: uppercase;
     font-size: 3em;
     font-weight: 100;
@@ -77,13 +87,15 @@
 
   .bionicContainer {
     text-align: left;
-    color: #222222;
+    min-height: 640px;
+    margin: 0 0.5rem;
   }
 
   textarea {
     width: 100%;
     resize: none;
     height: 640px;
+    color: #333;
   }
 
   footer {
@@ -96,7 +108,7 @@
     }
 
     .body {
-      width: 70%;
+      width: 55%;
       margin: 0 auto;
     }
   }
